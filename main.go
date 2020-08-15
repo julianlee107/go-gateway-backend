@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/julianlee107/gatewayScaffold/router"
+	"github.com/julianlee107/go-gateway-backend/router"
 	"github.com/julianlee107/go-common/lib"
 	"os"
 	"os/signal"

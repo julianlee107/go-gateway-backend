@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"github.com/julianlee107/go-common/lib"
+	"github.com/julianlee107/go-gateway-backend/common/lib"
 	"net/http"
 	"strings"
 )

@@ -1,4 +1,4 @@
-module github.com/julianlee107/gatewayScaffold
+module github.com/julianlee107/go-gateway-backend
 
 go 1.13
 

@@ -2,7 +2,7 @@ package lib
 
 import (
 	"fmt"
-	"github.com/julianlee107/gatewayScaffold/common/log"
+	"github.com/julianlee107/go-gateway-backend/common/log"
 	"strings"
 )
 

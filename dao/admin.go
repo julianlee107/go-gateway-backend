@@ -2,8 +2,8 @@ package dao
 
 import (
 	"errors"
-	"github.com/julianlee107/gatewayScaffold/dto"
-	"github.com/julianlee107/gatewayScaffold/public"
+	"github.com/julianlee107/go-gateway-backend/dto"
+	"github.com/julianlee107/go-gateway-backend/public"
 )
 import "github.com/jinzhu/gorm"
 

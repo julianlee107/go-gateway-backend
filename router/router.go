@@ -2,7 +2,7 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/julianlee107/gatewayScaffold/docs"
+	"github.com/julianlee107/go-gateway-backend/docs"
 	"github.com/julianlee107/go-common/lib"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"

@@ -2,8 +2,8 @@ package controllers
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/julianlee107/gatewayScaffold/dto"
-	"github.com/julianlee107/gatewayScaffold/middleware"
+	"github.com/julianlee107/go-gateway-backend/dto"
+	"github.com/julianlee107/go-gateway-backend/middleware"
 	"net/http"
 )
 
