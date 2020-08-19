@@ -2,6 +2,8 @@ package lib
 
 import (
 	"bytes"
+	"database/sql"
+	"github.com/jinzhu/gorm"
 	"github.com/julianlee107/go-common/log"
 	"github.com/spf13/viper"
 	"io/ioutil"
@@ -38,9 +40,41 @@ type LogConfig struct {
 	CW    LogConfConsoleWriter `mapstructure:"console_writer"`
 }
 
+type MysqlMapConf struct {
+	Map map[string]*MySQLConf `mapstructure:"list"`
+}
+
+type MySQLConf struct {
+	DriverName      string `mapstructure:"driver_name"`
+	DataSourceName  string `mapstructure:"data_source_name"`
+	MaxOpenConn     int    `mapstructure:"max_open_conn"`
+	MaxIdleConn     int    `mapstructure:"max_idle_conn"`
+	MaxConnLifeTime int    `mapstructure:"max_conn_life_time"`
+}
+
+type RedisMapConf struct {
+	Map map[string]*RedisConf `mapstructure:"map"`
+}
+
+type RedisConf struct {
+	ProxyList    []string `mapstructure:"proxy_list"`
+	Password     string   `mapstructure:"password"`
+	Db           int      `mapstructure:"db"`
+	ConnTimeout  int      `mapstructure:"conn_timeout"`
+	ReadTimeout  int      `mapstructure:"read_timeout"`
+	WriteTimeout int      `mapstructure:"write_timeout"`
+}
+
 var (
 	ConfBase     *BaseConf
 	ViperConfMap map[string]*viper.Viper
+
+	DBMapPool       map[string]*sql.DB
+	GORMMapPool     map[string]*gorm.DB
+	DBDefaultPool   *sql.DB
+	GORMDefaultPool *gorm.DB
+	ConfRedis       *RedisConf
+	ConfRedisMap    *RedisMapConf
 )
 
 // get base config
@@ -60,6 +94,9 @@ func InitBaseConf(path string) error {
 		} else {
 			ConfBase.DebugMode = "debug"
 		}
+	}
+	if ConfBase.Log.Level == "" {
+		ConfBase.Log.Level = "trace"
 	}
 
 	if ConfBase.TimeLocation == "" {
@@ -116,6 +153,16 @@ func InitViperConf() error {
 			ViperConfMap[confType[0]] = v
 		}
 	}
+	return nil
+}
+
+func InitRedisConf(path string) error {
+	ConfRedis := &RedisMapConf{}
+	err := ParseConfig(path, ConfRedis)
+	if err != nil {
+		return err
+	}
+	ConfRedisMap = ConfRedis
 	return nil
 }
 

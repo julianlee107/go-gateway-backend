@@ -17,8 +17,8 @@ var ConfEnv string     //配置环境名 dev/debug/test/pro
 //eg: config = conf/dev/base.toml
 
 func ParseConfPath(config string) (err error) {
-	path := strings.Split(config, string(os.PathSeparator))
-	prefix := strings.Join(path[:len(path)-1], string(os.PathSeparator))
+	path := strings.Split(config, "/")
+	prefix := strings.Join(path[:len(path)-1], "/")
 	ConfEnvPath = prefix
 	ConfEnv = path[len(path)-2]
 	return

@@ -1,8 +1,8 @@
 package main
 
 import (
+	"github.com/julianlee107/go-gateway-backend/common/lib"
 	"github.com/julianlee107/go-gateway-backend/router"
-	"github.com/julianlee107/go-common/lib"
 	"os"
 	"os/signal"
 	"syscall"

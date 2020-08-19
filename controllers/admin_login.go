@@ -12,7 +12,7 @@ type AdminLoginController struct {
 
 func AdminLoginRegister(group *gin.RouterGroup) {
 	adminLogin := &AdminLoginController{}
-	group.POST("admin_login/login", adminLogin.AdminLogin)
+	group.POST("/login", adminLogin.AdminLogin)
 
 }
 
